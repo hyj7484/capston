@@ -1,0 +1,13 @@
+.Login_Conent_Left{
+  text-align: center;
+}
+.Login_Content_Left_Logo{
+  margin: 50px auto;
+  width: 200px;
+  height: 100px;
+}
+
+.Login_Content_Left_Btn{
+  width: 200px;
+  margin: 50px auto;
+}

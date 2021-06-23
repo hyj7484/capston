@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Jalnan;
+  src : url("./font/JalnanOTF.otf");
+}
+@font-face{
+  font-family: Kosug;
+  src : url("./font/KosugiMaru-Regular.ttf");
+}
+
+@font-face {
+  font-family: BMDOHYEON;
+  src : url("./font/BMDOHYEON_otf.otf");
+}
+
+div, input, span{
+  font-family: "Kosug", Jalnan;
+  font-weight: bolder;
+}
+
+*:focus{
+  outline: none;
+}
+button:focus{
+  outline: none;
+  border: 0;
+}

@@ -1,0 +1,49 @@
+.AddUser_Main{
+  width: 60%;
+  height: 100%;
+  background-color: white;
+  border-radius: 100px;
+  margin : 0 auto;
+}
+
+.AddUser_Top>img{
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+}
+.AddUser_Content{
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  text-align: center;
+}
+.AddUser_Content>h1{
+  font-size: 40px;
+}
+
+.AddUser_Content_Info, .AddUser_Content_Input{
+  display: inline-block;
+  margin: 10px;
+  font-size: 25px;
+}
+
+.AddUser_Content_Info{
+  width: 100px;
+}
+.AddUser_Content_Input{
+  width: 200px;
+}
+.AddUser_Content_Input>input{
+  border: 1px solid black;
+}
+
+
+.AddUser_Content_Btn{
+}
+.AddUser_Content_Btn>button{
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 30px;
+  background-color: rgba(84, 220, 250, 0.8);
+}

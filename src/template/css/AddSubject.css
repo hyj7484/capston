@@ -1,0 +1,17 @@
+.AddSubject_Main{
+  width: 60%;
+  height: 300px;
+  margin: 100px auto;
+  padding-top: 50px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 10px 10px 20px black;
+  border-radius: 10px;
+}
+.AddSubject_Main>h1{
+  font-size: 30px;
+}
+
+.AddSubject_Main>input{
+  border : 1px solid black;
+}

@@ -1,0 +1,49 @@
+.AddQuestion{
+  width: 80%;
+  height: 900px;
+  border-radius: 30px;
+  background-color: white;
+  box-shadow: 10px 10px 20px gray;
+  margin: 30px auto;
+}
+
+.AddQuestion_Title{
+  width: 90%;
+  height: 5%;
+  margin: 40px auto;
+}
+.AddQuestion_Title>h1{
+  font-size: 30px;
+}
+
+.AddQuestion_Title>input{
+  width: 70%;
+  height: 30px;
+  font-size: 20px;
+  border-bottom: 1px solid gray;
+}
+.AddQuestion_Title>span{
+  float: right;
+}
+
+
+.AddQuestion_Content{
+  width: 90%;
+  height: 75%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.AddQuestion_Btn{
+  width: 50%;
+  height: 10%;
+  margin: 10px auto;
+  text-align: center;
+}
+.AddQuestion_Btn>button{
+  width: 100px;
+  height: 40px;
+  margin: 15px 15px;
+  border-radius: 20px;
+  background-color: rgba(119, 180, 228, 0.6);
+}
