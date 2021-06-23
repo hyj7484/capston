@@ -1,0 +1,59 @@
+.StdList_UserList_Content{
+  width: 95%;
+  height: 80px;
+}
+.StdList_UserList_Top{
+  width: 95%;
+  height: 80px;
+  border-radius: 10px;
+  background-color: rgba(50, 50, 50, 0.1);
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  line-height: 80px;
+}
+.StdList_UserList{
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.StdList_UserList_Name{
+  display: inline-block;
+  padding-left: 10px;
+  width: 30%;
+}
+.StdList_UserList_Num{
+  display: inline-block;
+  padding-left: 10px;
+  width: 15%;
+  /* text-align: center; */
+}
+.StdList_UserList_Phone{
+  display: inline-block;
+  padding-left: 10px;
+  width: 15%;
+  /* text-align: center; */
+}
+.StdList_UserList_Mail{
+  display: inline-block;
+  padding-left: 10px;
+  width: 20%;
+  /* text-align: center; */
+}
+.StdList_UserList_Btn{
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+}
+
+.StdList_UserList_Btn>button{
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 15px;
+  margin: 10px;
+}
+
+.StdList_UserList_accept{
+  background-color: rgba(50, 220, 100, 0.8);
+}

@@ -1,0 +1,48 @@
+.ChangeUser_Main{
+  width: 50%;
+  height: 500px;
+  margin: 100px auto;
+  padding-top: 20px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 10px 10px 20px black;
+  border-radius: 10px;
+}
+.ChangeUser_Top>h1{
+  font-size: 30px;
+  margin: 40px;
+}
+.ChangeUser_Content{
+  width: 100%;
+
+}
+.ChangeUser_Content_Info, .ChangeUser_Content_Input{
+  display: inline-block;
+  margin: 10px;
+  font-size: 25px;
+}
+
+.ChangeUser_Content_Info{
+  width: 100px;
+}
+.ChangeUser_Content_Input{
+  width: 200px;
+  padding-right: 300px;
+}
+.ChangeUser_Content_Input>input{
+  border: 1px solid black;
+}
+.ChangeUser_Content_Btn{
+  margin-top: 20px;
+}
+.ChangeUser_Content_Btn>button{
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 30px;
+  /* background-color: rgba(50, 220, 100, 0.8); */
+}
+
+.ChangeUser_updateBtn{
+  background-color: rgba(50, 220, 100, 0.8);
+}

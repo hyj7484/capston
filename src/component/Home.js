@@ -1,7 +1,11 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import {AddSubject, Question, Logo, Logout, Material, ChangeSubject} from '../template/index';
+import {
+  AddSubject, Question, Logo, Logout,
+  Material, ChangeSubject, DeleteSubject,
+  StdList, ChangeUser, ReplayList
+} from '../template/index';
 
 import './css/Home.css';
 
@@ -15,7 +19,8 @@ const ClickView = (props) => {
     <>
       {
         btnList.map((value, index) => {
-        const click = (e) => {
+        const click = async (e) => {
+          await setClickState(null);
           setClickState(e);
         }
         if(user.userType !== "professor" && (value === "학생리스트" || value === "과목이름수정" || value === "과목삭제")){
@@ -50,6 +55,7 @@ const ClickView = (props) => {
 }
 
 const Subject = (props) => {
+  const  user = props.user;
   const [subject, setSubejct] = props.subjectState;
   const [subjectList, setSubjectList] = props.subjectListState;
   const setClickState = props.setClickState;
@@ -77,8 +83,13 @@ const Subject = (props) => {
     <>
     {subjectList != null &&
     subjectList.map((value, index) => {
-        const clickSubject = () => {
-          setClickState("학생리스트");
+        const clickSubject = async () => {
+          await setClickState(null);
+          if(user.userType === "professor"){
+            setClickState("학생리스트");
+          }else{
+            setClickState("자료실");
+          }
           setSubejct(value);
         }
       return (
@@ -103,7 +114,7 @@ const Home = (props) => {
   const [subject, setSubject] = props.subjectState;
   const [subjectList, setSubjectList] = useState(null);
 
-  const btnList = ["학생리스트", "자료실", "질문", "과목이름수정", "과목삭제", "수업시작"];
+  const btnList = ["학생리스트", "자료실", "질문", "다시보기", "과목이름수정", "과목삭제", "수업시작"];
   const urlMain = props.url;
   const url = {
     getSubject : `${urlMain}api/list/subject/${user.id || null}`,
@@ -112,13 +123,16 @@ const Home = (props) => {
     getMaterialData : `${urlMain}api/list/teachingmeterial/${subject != null && subject.id}`,
     deleteSubject : `${urlMain}api/delete/class/${subject != null && subject.id}`,
     updateSubjectName : `${urlMain}api/main/updateclassname/${subject != null &&subject.id}`,
+    getStudent : `${urlMain}api/list/student/${subject != null && subject.id}`,
+    updateUser : `${urlMain}api/main/modifyuser/${user.id}`,
+    getReplayList :  `${urlMain}api/list/video/${subject != null && subject.id}/${user.id}`,
   };
 
   useEffect(async()=>{
     await setContentView(null);
     if(clickState != null){
       if(clickState === "학생리스트"){
-        setContentView(null);
+        setContentView(<StdList url={url} urlMain={urlMain} subject={subject} user={user}/>);
       }else if(clickState === "자료실"){
         setContentView(<Material urlMain={urlMain} url={url} user={user} subject={subject}/>);
       }else if(clickState === "질문"){
@@ -126,11 +140,15 @@ const Home = (props) => {
       }else if(clickState === "과목이름수정"){
         setContentView(<ChangeSubject subjectState={[subject, setSubject]} url={url} setSubjectList={setSubjectList} setClickState={setClickState}/>);
       }else if(clickState === "과목삭제"){
-        onClickDelete();
+        setContentView(<DeleteSubject url={url} setClickState={setClickState} setSubjectList={setSubjectList} subjectState={[subject, setSubject]} />);
       }else if(clickState === "수업시작"){
 
       }else if(clickState === "addSubject"){
         setContentView(<AddSubject url={url} urlMain={urlMain} user={user} setContentView={setContentView} setSubjectList={setSubjectList}/>);
+      }else if(clickState === "정보수정"){
+        setContentView(<ChangeUser url={url} userState={[user, setUser]} subject={subject} setContentView={setContentView} setClickState={setClickState}/>)
+      }else if(clickState === "다시보기"){
+        setContentView(<ReplayList url={url} urlMain={urlMain} subject={subject} user={user} />)
       }
     }
   }, [clickState, subject]);
@@ -148,6 +166,7 @@ const Home = (props) => {
   }
 
   const changeUserInfo = () =>{
+    setClickState("정보수정");
   }
 
   const addSubject = () => {
@@ -177,7 +196,7 @@ const Home = (props) => {
           </button>
 
           <ul className="Home_SubjectList_Main mt-2 text-gray-600">
-            <Subject setClickState={setClickState} url={url} subjectState={props.subjectState} subjectListState={[subjectList, setSubjectList]}/>
+            <Subject user={user} setClickState={setClickState} url={url} subjectState={props.subjectState} subjectListState={[subjectList, setSubjectList]}/>
           </ul>
           <Logout setUser={setUser}/>
       </nav>

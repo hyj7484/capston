@@ -122,7 +122,14 @@
   width: 100%;
   height: 250px;
   text-align: center;
+  overflow: auto;
+  -ms-overflow-style: none;
 }
+
+.Material_Add_Content::-webkit-scrollbar{
+display: none;
+}
+
 .Material_Add_Btn>button{
   width: 100px;
   height: 50px;
@@ -135,8 +142,10 @@
 
 .Material_Add_Label{
   padding: 10px 10px;
-  background-color: rgb(227, 128, 210);
+  background-color: rgb(238, 85, 85);
+  color: white;
   border-radius: 20px;
+
 }
 .Material_Add_fileName{
   width: 80%;

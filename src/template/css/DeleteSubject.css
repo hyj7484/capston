@@ -1,0 +1,13 @@
+.DeleteSubject_Main{
+  width: 40%;
+  height: 250px;
+  margin: 100px auto;
+  padding-top: 50px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 10px 10px 20px black;
+  border-radius: 10px;
+}
+.DeleteSubject_Main>h1{
+  font-size: 30px;
+}

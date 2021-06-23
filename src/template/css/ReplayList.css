@@ -1,0 +1,94 @@
+.ReplayList_Top{
+  width: 95%;
+  height: 80px;
+  border-radius: 10px;
+  background-color: rgba(50, 50, 50, 0.1);
+  margin-top: 20px;
+  margin-bottom: 30px;
+  /* box-shadow: 5px 5px 1px gray; */
+}
+
+.ReplayList_Top_Content{
+  padding-left: 20px;
+  display: inline-block;
+  line-height: 80px;
+  font-size: 30px;
+}
+
+.ReplayList_Title{
+  width: 28%;
+  float: left;
+  padding-left: 20px;
+}
+.ReplayList_Date{
+  width: 30%;
+  margin-left: 10px;
+  float: left;
+}
+.ReplayList_Btn{
+  width: 40%;
+  float: right;
+}
+
+.ReplayList_List{
+  width: 95%;
+  height: 130px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.ReplayList_List_Content{
+  display: inline-block;
+  height: 100%;
+  font-size: 25px;
+}
+
+.ReplayList_Title_Big, .ReplayList_Title_Small{
+  height: 50%;
+  display: block;
+  padding-top : 20px;
+}
+.ReplayList_Title_Small>input{
+  border-bottom: 1px solid gray;
+}
+.ReplayList_Title_Small>img{
+  height: 80%;
+  display: inline-block;
+  transform: rotate(180deg);
+  margin-right: 20px;
+}
+
+.ReplayList_List>.ReplayList_Date {
+  line-height: 130px;
+}
+
+.ReplayList_Btn_Top, .ReplayList_Btn_Bottom{
+  display: inline-block;
+  height: 100%;
+  padding-right: 20px;
+  float: right;
+}
+.ReplayList_Btn_Top{
+  padding-top: 20px;
+}
+.ReplayList_Btn_Top>img{
+  width: 40px;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.ReplayList_Btn_Bottom{
+  text-align: center;
+  padding-top: 30px;
+}
+.ReplayList_Btn_Bottom>button{
+  padding: 0 10px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 20px;
+  font-size: 20px;
+  float: right;
+  background-color: rgba(50, 220, 100, 0.8);
+}

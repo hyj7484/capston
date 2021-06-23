@@ -88,7 +88,7 @@ const AddUser = (props) => {
         <div className="AddUser_Content_Info"> 이름 </div>
         <div className="AddUser_Content_Input"> <input type="text" onChange={changeName} defaultValue={data.userName}/> </div> <br/>
         <div className="AddUser_Content_Info"> 학번 </div>
-        <div className="AddUser_Content_Input"> <input type="text" onChange={changeNum} defaultValue={data.userNum}/> </div> <br/>
+        <div className="AddUser_Content_Input"> <input type="number" onChange={changeNum} defaultValue={data.userNum}/> </div> <br/>
         <div className="AddUser_Content_Info"> 메일 </div>
         <div className="AddUser_Content_Input"> <input type="text" defaultValue={data.userMail}/> </div> <br/>
         <div className="AddUser_Content_Info"> 전화번호 </div>

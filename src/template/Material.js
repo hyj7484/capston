@@ -112,7 +112,7 @@ const Material = (props) => {
         <div className="Material_Top_Content Material_Date"> 등록 일시 </div>
         <div className="Material_Btn_Top ">
           {user.userType === "professor" &&
-            <button onClick={addMaterial}> 자료등록 </button>
+            <button onClick={addMaterial} className=""> 자료등록 </button>
           }
         </div>
       </div>
@@ -127,8 +127,13 @@ const Material = (props) => {
           const minute = times[1];
           const date = year + "년 " + month + "월 " + day + "일 " + time + "시 " + minute + "분";
 
-          const deleteMaterial = () => {
-
+          const deleteMaterial = async () => {
+            const url = `${urlMain}api/delete/teachmeterial/${value.id}`;
+            await axios.post(url)
+            .then(req => {
+              getMaterialData();
+              console.log(req.data);
+            });
           }
 
           const downLoadMaterial = () => {

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import {Login, Home, AddUser, AddQuestion, Test} from './component/index';
+import {Login, Home, AddUser, AddQuestion, Test, Replay} from './component/index';
 
 import './App.css';
 
@@ -40,8 +40,8 @@ function App() {
           <Route path='/addQuestion/:id' exact>
             <AddQuestion user={[user, setUser]} subject={subject} url={urlMain}/>
           </Route>
-          <Route path="/material/:id" exact>
-            
+          <Route path='/replay/:id/:fileName' exact>
+            <Replay urlMain={urlMain} user={user} subject={subject}/>
           </Route>
 
           <Route path="/test" exact>
