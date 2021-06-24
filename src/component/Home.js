@@ -93,10 +93,11 @@ const Subject = (props) => {
           }
           setSubejct(value);
         }
+        const color = subject !== null ? subject.id === value.id ? "#cb8aff" : "#888" : "#888";
       return (
-        <li className="mt-4"  key={index}>
-          <a className="flex" onClick={clickSubject}>
-            <span className="ml-2 capitalize font-medium text-black dark:text-gray-300 cursor-pointer">
+        <li className="mt-2"  key={index} >
+          <a className="flex" onClick={clickSubject} >
+            <span style={{color:color}} className="ml-2 capitalize font-medium text-black dark:text-gray-300 cursor-pointer">
               {value.className}
             </span>
           </a>
@@ -186,11 +187,14 @@ const Home = (props) => {
           </div>
           <div className="mt-8">
               <h2 className="mt-4 text-xl dark:text-gray-300 font-extrabold capitalize">
-                  {user.userName}
+                  {user.userName} {user.userType === "student" ? "학생" : " 교수님"}
               </h2>
-              <br/>
-              <span> <a className="cursor-pointer" onClick={changeUserInfo}> 정보수정 </a> </span>
+              <span style={{color:"#999"}}> <a className="cursor-pointer" onClick={changeUserInfo}> 정보수정 </a> </span>
           </div>
+          <span style={{marginTop:"30px", paddingTop:"30px", borderTop:"1px solid #bbb"}}> 과목리스트 </span>
+          <ul className="Home_SubjectList_Main mt-2 text-gray-600">
+            <Subject user={user} setClickState={setClickState} url={url} subjectState={props.subjectState} subjectListState={[subjectList, setSubjectList]}/>
+          </ul>
           <button className="mt-8 flex items-center justify-between py-3 px-2 text-white dark:text-gray-200 bg-green-400 dark:bg-green-500 rounded-lg shadow"
           onClick={addSubject}
           >
@@ -199,10 +203,6 @@ const Home = (props) => {
               <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
             </svg>
           </button>
-
-          <ul className="Home_SubjectList_Main mt-2 text-gray-600">
-            <Subject user={user} setClickState={setClickState} url={url} subjectState={props.subjectState} subjectListState={[subjectList, setSubjectList]}/>
-          </ul>
           <Logout setUser={setUser}/>
       </nav>
 

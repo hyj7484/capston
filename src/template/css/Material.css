@@ -1,3 +1,5 @@
+
+
 .Material_Main{
   width: 1400px;
   height: 100%;
@@ -18,7 +20,7 @@
 .Material_Top_Content{
   padding-left: 20px;
   display: inline-block;
-  line-height: 80px;
+  line-height: 50px;
   font-size: 30px;
 }
 
@@ -40,13 +42,15 @@
   width: 45%;
   height: 100%;
   padding-right: 2%;
-  font-size: 25px;
+  font-size: 18px;
+  margin-top: 15px;
 }
 .Material_Date{
   width: 30%;
   height: 100%;
-  font-size: 25px;
+  font-size: 18px;
   margin-right: 5%;
+  margin-top: 15px;
 }
 .Material_Btn{
   width: 20%;
@@ -54,11 +58,13 @@
   float: right;
 }
 .Material_Btn>button{
-  width: 80px;
-  height: 40px;
-  background-color: rgba(50, 220, 100, 0.8);
+  /*background-color: rgb(53, 211, 153);*/
   margin: 10px;
-  border-radius: 20px;
+  color: white;
+  border-radius: 40px;
+  padding: 10px 50px 10px 20px;
+  background: #35d399 url(../../img/download.png) no-repeat 80% center;
+  background-size:13%;
 }
 
 .Material_Content_Btn{

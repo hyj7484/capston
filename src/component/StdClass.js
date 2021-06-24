@@ -111,8 +111,6 @@ export default function StdClass(props){
           Page Move ? : Where ?
           if No Move : Exit Btn make ?
         */
-        console.log('end room');
-        console.log(videoId);
         await sendMarker();
         await sendNote();
         history.push('/');
@@ -243,22 +241,41 @@ export default function StdClass(props){
   }
 
   return (
-    <div className="StdClass_Main_Frame">
-      <div className="StdClass_Logo_Frame">
-        {view_Logo()}
-      </div>
-      <div className="StdClass_Content_Frame">
-        <div className="StdClass_Video_Frame"> {view_video()}  </div>
-        <div className="StdClass_Right_Frame">
-          <div className="StdClass_Cam_Video" id="video_view_Cam"> </div>
-          <div className="StdClass_Note_Frame">
-            <Note user={props.user} videoId={videoId} url={urlMain}/>
+    <div className="font-sans bg-white flex flex-col min-h-screen w-full">
+      <div>
+        <div className="bg-gray-200 md:overflow-hidden">
+          <div className="px-4 pt-10">
+            <div className="relative w-full md:max-w-2xl md:mx-auto text-center">
+              <h1 className="font-bold text-gray-700 text-xl sm:text-2xl md:text-5xl leading-tight mb-3"> {props.subject.className} </h1>
+              <div className="hidden md:block h-40 w-40 rounded-full bg-blue-600 absolute right-0 bottom-0 -mb-1 -mr-48"></div>
+              <div className="hidden md:block h-5 w-5 rounded-full bg-yellow-500 absolute top-0 right-0 -mr-64 mt-20"></div>
+            </div>
           </div>
-          <div className="StdClass_UnderBar_Frame">
-            {view_underbar()}
-          </div>
+          <svg className="fill-current bg-gray-200 text-white hidden md:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fillOpacity="1" d="M0,64L120,85.3C240,107,480,149,720,149.3C960,149,1200,107,1320,85.3L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+          </svg>
         </div>
-      </div>
+        <div className="mx-auto shadow-lg relative z-20" style={{marginTop:"-370px", borderRadius:"20px"}}>
+          <div className="h-20 w-20 rounded-full bg-yellow-500 absolute top-0 left-0 ml-64 -mt-32" style={{zIndex : "-1"}}></div>
+          <div className="h-5 w-5 rounded-full bg-blue-500 absolute top-0 left-0 ml-32 -mt-32" style={{zIndex: "-1"}}></div>
+          <div className="StdClass_Content">
+            <div className="StdClass_Content_Left bg-yellow-500">
+              <div className="StdClass_Video_Frame"> {view_video()}  </div>
+            </div>
+            <div className="StdClass_Content_Right Std_Con_Right bg-blue-500">
+              <div className="StdClass_Content_Right_Top">
+                <div className="StdClass_Cam_Video" id="video_view_Cam"> </div>
+              </div>
+              <div className="StdClass_Content_Right_Bottom">
+                <Note url={urlMain} user={props.user} videoId={videoId} style={{margin : "0 auto", width:"90%"}}/>
+              </div>
+              <div className="StdClass_Bottom">
+                {view_underbar()}
+              </div>
+            </div>
+          </div>
     </div>
+  </div>
+</div>
   )
 }

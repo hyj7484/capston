@@ -106,7 +106,7 @@ const Replay = (props) => {
           </div>
           <div className="Reaplay_Bottom">
             <button className="bg-green-500" onClick={exit}> 나가기 </button>
-          </div>
+      </div>
     </div>
   </div>
 </div>

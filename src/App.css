@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
 @font-face {
   font-family: Jalnan;
   src : url("./font/JalnanOTF.otf");
@@ -15,10 +17,11 @@ body{
   /* width : 1700px; */
 }
 
-div, input, span{
-  font-family: "Kosug", Jalnan;
+div, input, span, button{
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
 }
+
 
 *:focus{
   outline: none;

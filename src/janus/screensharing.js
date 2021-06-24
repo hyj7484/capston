@@ -305,11 +305,10 @@ const createJanus = () => {
           }
         },
         onlocalstream : (stream) => {
-
           Janus.debug(" ::: Got a local stream ::: ", stream);
           console.log(stream);
           if($('#screenvideo').length === 0){
-            $("#video_view").append('<video class="rounded centered" id="screenvideo" width="100%" height="100%" autoplay playsinline controls />');
+            $("#video_view").append('<video class="rounded centered" id="screenvideo" width="100%" height="100vh" autoplay playsinline controls />');
             setVideoTag(document.getElementById('screenVideo'));
           }
           console.log(stream.getAudioTracks());
@@ -568,8 +567,8 @@ const newRemoteFeed = (id, display) => {
     onremotestream : (stream) => {
       console.log("onremoteStream")
       if($("#screenvideo").length === 0){
-        $("#video_view").append('<video class="rounded centered" id="waitingvideo" width="100%" height="100%" />');
-        $("#video_view").append('<video class="rounded centered hide" muted id="screenvideo" width="100%" height="100%" playsinline/>');
+        $("#video_view").append('<video class="rounded centered" id="waitingvideo" width="100%" height="100vh" />');
+        $("#video_view").append('<video class="rounded centered hide" muted id="screenvideo" width="100%" height="100vh" playsinline/>');
         console.log($('#screenvideo'));
         // $("#screenvideo")[0].volume = 0;
 
