@@ -1,3 +1,6 @@
+.ReplayList_Main{
+  width: 1400px;
+}
 .ReplayList_Top{
   width: 95%;
   height: 80px;
@@ -16,17 +19,16 @@
 }
 
 .ReplayList_Title{
-  width: 28%;
+  width: 40%;
   float: left;
   padding-left: 20px;
 }
 .ReplayList_Date{
   width: 30%;
-  margin-left: 10px;
   float: left;
 }
 .ReplayList_Btn{
-  width: 40%;
+  width: 30%;
   float: right;
 }
 

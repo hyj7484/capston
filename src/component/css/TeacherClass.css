@@ -1,0 +1,41 @@
+
+.TeacherClass_Main_Frame{
+  width: 50%;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.TeacherClass_Top{
+  width: 100%;
+  height: 100px;
+}
+.TeacherClass_Top_Logo{
+  width: 300px;
+  height: 130px;
+  margin: 0 auto;
+}
+.TeacherClass_Top_Logo>img{
+  width: 100%;
+  height: 100%;
+}
+.TeacherClass_Content{
+  width: 100%;
+  text-align: center;
+}
+.TeacherClass_Content_info{
+  width: 100%;
+  margin-top: 60px;
+  line-height: 50px;
+  font-size: 30px;
+}
+
+.TeacherClass_EndBtn, .TeacherClass_System_Start{
+  width: 140px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: blue;
+  color : white;
+  font-size: 20px;
+}

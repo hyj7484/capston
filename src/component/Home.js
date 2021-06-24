@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 
 import {
@@ -108,11 +109,15 @@ const Subject = (props) => {
 }
 
 const Home = (props) => {
-  const [clickState, setClickState] = useState(null);
+  const [clickState, setClickState]   = useState(null);
   const [contentView, setContentView] = useState(null);
-  const [user, setUser] = props.userState;
-  const [subject, setSubject] = props.subjectState;
   const [subjectList, setSubjectList] = useState(null);
+
+  const [user, setUser]       = props.userState;
+  const [subject, setSubject] = props.subjectState;
+  const [video, setVideo]     = props.videoState;
+
+  const history = useHistory();
 
   const btnList = ["학생리스트", "자료실", "질문", "다시보기", "과목이름수정", "과목삭제", "수업시작"];
   const urlMain = props.url;
@@ -142,13 +147,13 @@ const Home = (props) => {
       }else if(clickState === "과목삭제"){
         setContentView(<DeleteSubject url={url} setClickState={setClickState} setSubjectList={setSubjectList} subjectState={[subject, setSubject]} />);
       }else if(clickState === "수업시작"){
-
+        history.push('/play')
       }else if(clickState === "addSubject"){
         setContentView(<AddSubject url={url} urlMain={urlMain} user={user} setContentView={setContentView} setSubjectList={setSubjectList}/>);
       }else if(clickState === "정보수정"){
         setContentView(<ChangeUser url={url} userState={[user, setUser]} subject={subject} setContentView={setContentView} setClickState={setClickState}/>)
       }else if(clickState === "다시보기"){
-        setContentView(<ReplayList url={url} urlMain={urlMain} subject={subject} user={user} />)
+        setContentView(<ReplayList url={url} urlMain={urlMain} subject={subject} user={user} videoState={[video, setVideo]} />)
       }
     }
   }, [clickState, subject]);

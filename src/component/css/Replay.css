@@ -1,0 +1,45 @@
+.Replay_Content{
+  width: 95%;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.Replay_Content_Left, .Replay_Content_Right{
+  height: 100%;
+  float: left;
+}
+
+.Replay_Content_Left{
+  width: 75%;
+  margin-right: 1%;
+  border-radius: 20px;
+  padding: 1%;
+}
+
+.Replay_Content_Right{
+  width: 24%;
+  border-radius: 20px;
+
+  /* background-color: rgb(81, 111, 60); */
+}
+.Reaplay_Bottom{
+  width: 95%;
+  margin: 10px auto;
+  height: 100px;
+  text-align: right;
+}
+.Reaplay_Bottom>button{
+  padding: 10px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.Replay_Content_Right_Top, .Replay_Content_Right_Bottom{
+  display: block;
+  width: 100%;
+}
+
+.Replay_Content_Right_Top{
+  height: 40%;
+  padding: 20px;
+}

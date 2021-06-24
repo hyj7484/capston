@@ -35,6 +35,7 @@
 }
 .AddUser_Content_Input>input{
   border: 1px solid black;
+  padding-left: 10px;
 }
 
 

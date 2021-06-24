@@ -9,11 +9,14 @@ import arrow from '../img/arrow.png';
 
 const ReplayList = (props) => {
   const [replayList, setReplayList] = useState(null);
-  const [tagState, setTagState] = useState(null);
-  const [tagText, setTagText] = useState(null);
-  const url = props.url;
+  const [tagState, setTagState]     = useState(null);
+  const [tagText, setTagText]       = useState(null);
+
+  const [video, setVideo] = props.videoState;
+
+  const url     = props.url;
   const urlMain = props.urlMain;
-  const user = props.user;
+  const user    = props.user;
   const subject = props.subject;
   const history = useHistory();
 
@@ -91,14 +94,14 @@ const ReplayList = (props) => {
         setTagText(e.target.value);
       }
       const onKeyTag = (e) => {
-        console.log("??")
         if(e.key === "Enter"){
           onClickTagChange();
         }
       }
 
       const onClick_ReplayLook = () =>{
-        history.push(`/replay/${value.videoId}/${value.fileName}`);
+        setVideo(value)
+        history.push(`/replay`);
       }
       if(value.fileName !== ""){
       return (
@@ -106,13 +109,13 @@ const ReplayList = (props) => {
           <div className="ReplayList_List_Content ReplayList_Title">
             <div className="ReplayList_Title_Big"> {fileName} </div>
             <div className="ReplayList_Title_Small">
-              {tagState !== null ? value.id === tagState &&
+              { (tagState !== null && value.id === tagState ) ?
                 <>
-                <img src={arrow} />
-                <input type="text" defaultValue={tagText} onChange={onChangeTag} onKeyPress={onKeyTag}/>
+                  <img src={arrow} />
+                  <input type="text" defaultValue={tagText} onChange={onChangeTag} onKeyPress={onKeyTag}/>
                 </>
                 :
-                <span> {value.subName != null ? value.subName : "저장된 소제목이 없습니다."} </span>
+                  <span> {value.subName != null ? value.subName : "저장된 소제목이 없습니다."} </span>
               }
             </div>
           </div>
@@ -123,11 +126,13 @@ const ReplayList = (props) => {
             </div>
             <div className="ReplayList_Btn_Bottom">
               <button onClick={onClick_ReplayLook}> 영상보기 </button>
-              <button onClick={onClickTagChange}> {tagState !== null && value.id === tagState ? <> 등록 </> : <> 소제목변경 </>} </button>
-              {user.userType === "professor" &&
+              <button onClick={onClickTagChange}>
+                {(tagState !== null && value.id === tagState) ? <> 등록 </> : <> 소제목변경 </>}
+              </button>
+              {/*user.userType === "professor" &&
                 <>
                 <button> 삭제 </button>
-                </>
+                </>*/
               }
             </div>
           </div>

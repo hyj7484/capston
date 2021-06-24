@@ -7,16 +7,22 @@ import Logo from '../img/logo.png';
 const AddUser = (props) => {
 
   const setUser = props.setUser;
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({
+    userName  : '',
+    userType  : '',
+    userMail  : '',
+    userNum   : '',
+    userPhone : ''
+  });
   const urlMain = props.url;
   const history = useHistory();
 
   const routeMatch = useRouteMatch("/addUser/:mail/:name").params;
   const mail = routeMatch.mail;
   const name = routeMatch.name;
-
   const url = {
       addInfo : `${urlMain}api/index/addinfo`,
+      login : `${urlMain}api/index/login`,
   }
 
   useEffect(()=>{
@@ -29,9 +35,6 @@ const AddUser = (props) => {
     });
   }, []);
 
-  useEffect(()=>{
-    console.log(data);
-  }, [data]);
   const changeType = (e) => {
     setData({
       ...data,
@@ -63,11 +66,27 @@ const AddUser = (props) => {
       await axios.post(url.addInfo, {data})
      .then(req => {
        if(req.data.result){
-         setUser(data);
+         login();
          history.push('/');
        }
      });
     }
+  }
+
+  const login = async () => {
+    const option = {
+      data : {
+        mail : data.userMail
+      }
+    }
+    await axios.post(url.login, option)
+    .then(req => {
+      if(req.data.result){
+        setUser(req.data.result[0]);
+      }else{
+        history.push(`/addUser/${data.userMail}/${data.userName}`);
+      }
+    }).catch(err => console.error(err));
   }
 
   const cancel = () => {

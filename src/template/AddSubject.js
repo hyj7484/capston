@@ -8,6 +8,7 @@ const AddSubject = (props) => {
   const user = props.user;
   const setContentView = props.setContentView;
   const setSubjectList = props.setSubjectList;
+  console.log(user);
 
   const changeText = (e) => {
     setText(e.target.value);

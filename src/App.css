@@ -11,6 +11,9 @@
   font-family: BMDOHYEON;
   src : url("./font/BMDOHYEON_otf.otf");
 }
+body{
+  /* width : 1700px; */
+}
 
 div, input, span{
   font-family: "Kosug", Jalnan;

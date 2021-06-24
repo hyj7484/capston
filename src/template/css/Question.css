@@ -1,5 +1,5 @@
 .Question_Main{
-  width: 100%;
+  width: 1400px;
   height: 100%;
   overflow: auto;
   -ms-overflow-style: none;
@@ -33,6 +33,7 @@
 }
 .Question_Content{
   display: inline-block;
+  float: left;
 }
 
 .Question_Title{
@@ -41,12 +42,7 @@
   font-size: 25px;
 }
 .Question_Date{
-  width: 15%;
-  height: 100%;
-  font-size: 25px;
-}
-.Question_user{
-  width: 15%;
+  width: 30%;
   height: 100%;
   font-size: 25px;
 }
