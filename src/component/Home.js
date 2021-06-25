@@ -5,7 +5,8 @@ import axios from 'axios';
 import {
   AddSubject, Question, Logo, Logout,
   Material, ChangeSubject, DeleteSubject,
-  StdList, ChangeUser, ReplayList
+  StdList, ChangeUser, ReplayList,
+  Introduce
 } from '../template/index';
 
 import './css/Home.css';
@@ -156,6 +157,8 @@ const Home = (props) => {
       }else if(clickState === "다시보기"){
         setContentView(<ReplayList url={url} urlMain={urlMain} subject={subject} user={user} videoState={[video, setVideo]} />)
       }
+    }else{
+      setContentView(<Introduce user={user} />)
     }
   }, [clickState, subject]);
 
@@ -178,6 +181,10 @@ const Home = (props) => {
   const addSubject = () => {
     setClickState("addSubject");
   }
+
+  // const d = () => {
+  //   history.push('/test')
+  // }
 
   return (
     <div className="h-screen w-full flex overflow-hidden">

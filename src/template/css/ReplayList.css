@@ -15,7 +15,7 @@
   padding-left: 20px;
   display: inline-block;
   line-height: 80px;
-  font-size: 30px;
+  font-size: 18px;
 }
 
 .ReplayList_Title{
@@ -43,7 +43,7 @@
 .ReplayList_List_Content{
   display: inline-block;
   height: 100%;
-  font-size: 25px;
+  font-size: 19px;
 }
 
 .ReplayList_Title_Big, .ReplayList_Title_Small{

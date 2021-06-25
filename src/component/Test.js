@@ -1,293 +1,200 @@
-const Test = () => {
+import {useState, useEffect, useRef} from 'react';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
+import io from 'socket.io-client';
+
+
+import JanusScreen from '../janus/ScrennJ';
+import {Note} from '../template/index';
+
+
+let markList = [];
+
+const View_underbar = (props) => {
+  const handsUpBtn = props.handsUpBtn || null;
+  const marker = () => {
+
+  }
+  const handsUp = () => {
+
+  }
   return (
-    <div className="h-screen w-full flex overflow-hidden">
-      <nav className="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
-          <div className="flex flex-row border-b items-center justify-between pb-2">
-              <span className="text-lg font-semibold capitalize dark:text-gray-300"> my admin </span>
-
-              <span className="relative">
-                  <a className="hover:text-green-500dark-hover:text-green-300text-gray-600dark:text-gray-300"
-                      href="inbox/">
-                      <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                      >
-                          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                      </svg>
-                  </a>
-                  <div
-                      className="
-                          absolute
-                          w-2
-                          h-2
-                          rounded-full
-                          bg-green-500
-                          dark-hover:bg-green-300
-                          right-0
-                          mb-5
-                          bottom-0
-                      "
-                  ></div>
-              </span>
-          </div>
-
-          <div className="mt-8">
-              <img
-                  className="h-12 w-12 rounded-full object-cover"
-                  src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
-                  alt="enoshima profile"
-              />
-              <h2 className="mt-4 text-xl dark:text-gray-300 font-extrabold capitalize">
-                  Hello Enoshima
-              </h2>
-              <span className="text-sm dark:text-gray-300">
-                  <span className="font-semibold text-green-600 dark:text-green-300"> Admin </span>
-                  id789038
-              </span>
-          </div>
-
-          <button
-              className="
-                  mt-8
-                  flex
-                  items-center
-                  justify-between
-                  py-3
-                  px-2
-                  text-white
-                  dark:text-gray-200
-                  bg-green-400
-                  dark:bg-green-500
-                  rounded-lg
-                  shadow
-              "
-          >
-
-              <span>Add user</span>
-              <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-              </svg>
-          </button>
-
-          <ul className="mt-2 text-gray-600">
-              <li className="mt-8">
-                  <a href="#home" className="flex">
-                      <svg className="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
-                          <path d="M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m64h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m64h4v-4h-4M4 8h4V4H4v4z"></path>
-                      </svg>
-                      <span className="ml-2 capitalize font-medium text-black dark:text-gray-300">
-                          dashboard
-                      </span>
-                  </a>
-              </li>
-
-              <li className="mt-8">
-                  <a href="#home" className="flex">
-                      <svg className="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
-                          <path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-22v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 000-2-2h-1V1m-1 11h-5v5h5v-5z">
-                          </path>
-                      </svg>
-                      <span className="ml-2 capitalize font-medium text-black dark:text-gray-300">
-                          calendar
-                      </span>
-                  </a>
-              </li>
-
-
-              <li className="mt-8">
-                  <a href="#home" className="flex">
-                      <svg className="fill-current h-5 w-5 dark:text-gray-300" viewBox="0 0 24 24">
-                          <path d="M12 13H7v5h5v2H5V10h2v1h5v2M84v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-29v2h-4v-2h4m2-2h-8v6h8v-6z">
-                          </path>
-                      </svg>
-                      <span className="ml-2 capitalize font-medium text-black dark:text-gray-300">
-                          tasks
-                      </span>
-                  </a>
-              </li>
-          </ul>
-
-          <div className="mt-auto flex items-center text-red-700 dark:text-red-400">
-
-              <a href="#home" className="flex items-center">
-                  <svg className="fill-current h-5 w-5" viewBox="0 0 24 24">
-                      <path
-                          d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 012
-                2v2h-2V4H5v16h9v-2h2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2
-                0 012-2h9z"
-                      ></path>
-                  </svg>
-                  <span className="ml-2 capitalize font-medium">log out</span>
-              </a>
-          </div>
-      </nav>
-      <main
-          className="
-              flex-1 flex flex-col
-              bg-gray-100
-              dark:bg-gray-700
-              transition
-              duration-500
-              ease-in-out
-              overflow-y-auto
-          "
-      >
-          <div className="mx-10 my-2">
-              <nav
-                  className="
-                      flex flex-row
-                      justify-between
-                      border-b
-                      dark:border-gray-600
-                      dark:text-gray-400
-                      transition
-                      duration-500
-                      ease-in-out
-                  "
-              >
-                  <div className="flex">
-
-                      <a
-                          href="users-dashboard/"
-                          className="
-                              py-2
-                              block
-                              text-green-500
-                              border-green-500
-                              dark:text-green-200
-                              dark:border-green-200
-                              focus:outline-none
-                              border-b-2
-                              font-medium
-                              capitalize
-                              transition
-                              duration-500
-                              ease-in-out
-                          "
-                      >
-                          users
-                      </a>
-                      <button
-                          className="
-                              ml-6
-                              py-2
-                              block
-                              border-b-2 border-transparent
-                              focus:outline-none
-                              font-medium
-                              capitalize
-                              text-center
-                              focus:text-green-500
-                              focus:border-green-500
-                              dark-focus:text-green-200 dark-focus:border-green-200
-                              transition
-                              duration-500
-                              ease-in-out
-                          "
-                      >
-                          role
-                      </button>
-                      <button
-                          className="ml-6
-                              py-2
-                              block
-                              border-b-2 border-transparent
-                              focus:outline-none
-                              font-medium
-                              capitalize
-                              text-center
-                              focus:text-green-500
-                              focus:border-green-500
-                              dark-focus:text-green-200 dark-focus:border-green-200
-                              transition
-                              duration-500
-                              ease-in-out
-                          "
-                      >
-                          access rights
-                      </button>
-                  </div>
-
-              </nav>
-              <h2 className="my-4 text-4xl font-semibold dark:text-gray-400">User list</h2>
-
-              <div className="
-                      mt-2
-                      flex
-                      px-4
-                      py-4
-                      justify-between
-                      bg-white
-                      dark:bg-gray-600
-                      shadow-xl
-                      rounded-lg
-                      cursor-pointer
-                  "
-              >
-
-
-              </div>
-
-              <div className="
-                      mt-8
-                      flex
-                      px-4
-                      py-4
-                      justify-between
-                      bg-white
-                      dark:bg-gray-600
-                      shadow-xl
-                      rounded-lg
-                      cursor-pointer
-                  "
-              >
-
-              </div>
-
-              <div className="
-                      mt-8
-                      flex
-                      px-4
-                      py-4
-                      justify-between
-                      bg-white
-                      dark:bg-gray-600
-                      shadow-xl
-                      rounded-lg
-                      cursor-pointer
-                  "
-              >
-
-              </div>
-
-              <div className="
-                      mt-8
-                      mb-4
-                      flex
-                      px-4
-                      py-4
-                      justify-between
-                      bg-white
-                      dark:bg-gray-600
-                      shadow-xl
-                      rounded-lg
-                      cursor-pointer
-                  "
-              >
-
-              </div>
-
-          </div>
-      </main>
-  </div>
-
+    <div className="StdClass_UnderBar_Body">
+      <div className="StdClass_UnderBar_Button">
+        <button ref={handsUpBtn} className="StdClass_Btn_HandsUp" id="StdClass_Btn_Handsup" onClick={handsUp}> HandsUp </button>
+        <button className="StdClass_Btn_Marker" onClick={marker}> Marker </button>
+      </div>
+    </div>
   )
 }
+
+const Test = (props) => {
+  // const [socket, setSocket]     = useState(null);
+  const [markData, setMarkData] = useState(null)
+  const [room, setRooms]        = useState({ screenRoom : '', videoRoom : ''});
+  const [videoId, setVideoId]   = useState(null);
+  useEffect(()=>{
+    console.log(room);
+  }, [room])
+  const videoScreen = useRef();
+  const camScreen   = useRef();
+  const handsUpBtn  = useRef();
+  console.log(props);
+  const classId   = 1;
+  const className = props.subject ? props.subject.name :  'no name';
+  const userId    = props.user ? props.user.id : '2';
+  const urlMain   = props.url;
+  const socketUrl = props.socketUrl;
+  const history   = useHistory();
+
+  const url       = {
+    getRoom : `${urlMain}api/main/getroom/${classId}`,
+    setMarker : `${urlMain}api/mark/insert/${videoId}/${userId}`,
+    setNote : `${urlMain}api/memo/write/${videoId}/${userId}`,
+    getVideoId : `${urlMain}api/main/lastvideoid/${classId}`,
+    socket : {
+      connect : `${socketUrl}`,
+      markerReq : "markerReq",
+      markerRes : "markerRes",
+      handsup : "handsup",
+      end : 'endRoom',
+    }
+  }
+
+  useEffect(async ()=>{
+    // janus room number get
+    await axios.get(url.getRoom)
+    .then(req => {
+      console.log(req.data.classRanNum);
+      const roomObj = JSON.parse(req.data.classRanNum);
+      setRooms({
+        screenRoom : roomObj.screenRoom,
+        videoRoom  : roomObj.videoRoom
+      });
+    }).catch(err => console.error(err));
+
+    // getVideoId
+    await axios.post(url.getVideoId)
+    .then(req => {
+      setVideoId(req.data.videoId);
+    }).catch(err => console.error(err));
+
+    // set Socket
+    // const soc = io.connect(url.socket.connect);
+    // const data = {
+    //   roomId : classId,
+    //   type : "student",
+    //   id : userId
+    // }
+    // soc.emit('joinRoom', data);
+    // setSocket(soc);
+  }, []);
+
+  // useEffect(()=>{
+    // if(socket != null && videoId != null){
+    //   socket.on(url.socket.markerRes, (msg) => {
+    //     if(msg.stdId === userId){
+    //       setMarkData(msg.time);
+    //     }
+    //   });
+    //
+    //   socket.on(url.socket.handsup, (msg) => {
+    //     if(userId == msg.stdId || msg.stdId === "all"){
+    //       handsUpBtn.disabled = msg.bool;
+    //     }
+    //   });
+    //
+    //   socket.on(url.socket.end, async (msg) => {
+    //     await sendMarker();
+    //     await sendNote();
+    //     history.push('/');
+    //   });
+    // }
+  // }, [socket, videoId]);
+
+  useEffect(()=>{
+    if(videoId != null){
+      url.setMarker = `${urlMain}api/mark/insert/${videoId}/${userId}`;
+      url.setNote = `${urlMain}api/memo/write/${videoId}/${userId}`;
+    }
+  }, [videoId]);
+
+
+
+  const sendMarker = async () => {
+    const data = { tag : JSON.stringify(markList)};
+    console.log(markList);
+    console.log(data);
+    await axios.post(url.setMarker, {data})
+    .then(req => {
+      console.log(req);
+    });
+  }
+
+  const sendNote = async() => {
+    const noteElement = document.getElementById('Note_Text');
+    const data = { content : noteElement.innerHTML}
+    await axios.post(url.setNote, {data}).then( req => {
+      console.log(req);
+    });
+  }
+
+  const hansUp = () => {
+
+  }
+  const marker = () => {
+
+  }
+  console.log(room);
+  return (
+    <div className="font-sans bg-white flex flex-col min-h-screen w-full">
+      <div>
+        <div className="bg-gray-200 md:overflow-hidden">
+          <div className="px-4 pt-10">
+            <div className="relative w-full md:max-w-2xl md:mx-auto text-center">
+              <h1 className="font-bold text-gray-700 text-xl sm:text-2xl md:text-5xl leading-tight mb-3"> className </h1>
+              <div className="hidden md:block h-40 w-40 rounded-full bg-blue-600 absolute right-0 bottom-0 -mb-1 -mr-48"></div>
+              <div className="hidden md:block h-5 w-5 rounded-full bg-yellow-500 absolute top-0 right-0 -mr-64 mt-20"></div>
+            </div>
+          </div>
+          <svg className="fill-current bg-gray-200 text-white hidden md:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fillOpacity="1" d="M0,64L120,85.3C240,107,480,149,720,149.3C960,149,1200,107,1320,85.3L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+          </svg>
+        </div>
+        <div className="mx-auto shadow-lg relative z-20" style={{marginTop:"-370px", borderRadius:"20px"}}>
+          <div className="h-20 w-20 rounded-full bg-yellow-500 absolute top-0 left-0 ml-64 -mt-32" style={{zIndex : "-1"}}></div>
+          <div className="h-5 w-5 rounded-full bg-blue-500 absolute top-0 left-0 ml-32 -mt-32" style={{zIndex: "-1"}}></div>
+          <div className="StdClass_Content">
+            <div className="StdClass_Content_Left bg-yellow-500">
+              <div className="StdClass_Video_Frame">
+              {room.screenRoom !== '' &&
+              <>
+                <JanusScreen state='join' videoTag={videoScreen} room={room.screenRoom}/>
+                </>
+              }
+              </div>
+            </div>
+            <div className="StdClass_Content_Right Std_Con_Right bg-blue-500">
+              <div className="StdClass_Content_Right_Top">
+                {room.videoRoom !== '' &&
+                  <>
+                  <JanusScreen state='join' videoTag={camScreen} room={room.videoRoom}/>
+                  </>
+                }
+              </div>
+              <div className="StdClass_Content_Right_Bottom">
+                <Note url={urlMain} user={props.user} videoId={videoId} style={{margin : "0 auto", width:"90%"}}/>
+              </div>
+              <div className="StdClass_Bottom">
+                <View_underbar />
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  )
+}
+
+
 export default Test;

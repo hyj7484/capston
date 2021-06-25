@@ -168,8 +168,10 @@ const createJanus = () => {
         success : (pluginHandle) => {
           setPlugin(pluginHandle);
           if(getUserState() == "join"){
+            console.log("join");
             joinScreen();
           }else if(getUserState() == "create"){
+            console.log('create');
             preSharingScreen();
           }else{
             console.log("null");
@@ -203,11 +205,13 @@ const createJanus = () => {
         onmessage : (msg, jsep) => {
           Janus.debug(" ::: Got a message (publisher) :::", msg);
           var event = msg['videoroom'];
+          console.log(event);
           Janus.debug("Event : " + event);
           if(event) {
             if(event === "joined"){
               setUserId(msg['id']);
               Janus.log("Successfully joined room " + msg['room'] + " with ID " + getUserId());
+              console.log(getRole());
               if(getRole() === "publisher"){
                 Janus.debug("Negotiating WebRTC stream for our screen (capture " + getCapture() + ")");
                 if(Janus.webRTCAdapter.browserDetails.browser === "safari") {
@@ -261,6 +265,8 @@ const createJanus = () => {
                   });
                 }
               } else {
+                console.log(msg['publishers']);
+                console.log(msg);
                 if (msg['publishers']){
                   var list = msg['publishers'];
                   Janus.debug("Got a list of available publishers/feeds : ", list);
@@ -271,6 +277,8 @@ const createJanus = () => {
                     // newRemoteFeed function add
                     newRemoteFeed(id, display);
                   }
+                }else{
+
                 }
               }
             }else if (event === "event") {
@@ -490,6 +498,7 @@ export const joinScreen = () => {
 
 const newRemoteFeed = (id, display) => {
   console.log(id);
+  console.log("NEW REMOTE FEED");
   setSource(id);
   var remoteFeed = null;
   getJanus().attach({
@@ -609,7 +618,10 @@ const randomString = (len, charSet) => {
 }
 
 const startRecording = (stream) => {
-  let recorder = new MediaRecorder(stream);
+  const option = {
+    mimeType: "video/webm; codecs=vp9"
+  }
+  let recorder = new MediaRecorder(stream, option);
   setRecorder(recorder);
   console.log(getRecorder());
   let data = [];

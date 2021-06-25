@@ -44,6 +44,9 @@ function App() {
             <Login setUser={setUser} url={urlMain} />
           }
           </Route>
+          <Route path="/test" exact>
+            <Test user={user} subject={subject} url={urlMain} socketUrl={socketUrl}/>
+          </Route>
           {user === null &&
             <Route path='/addUser/:mail/:name' exact>
               <AddUser setUser={setUser} url={urlMain}/>
@@ -74,9 +77,6 @@ function App() {
             {()  => {history.push('/')}}
           </>
           }
-          <Route path="/test" exact>
-            <Test />
-          </Route>
         </Switch>
       </Router>
     </>
